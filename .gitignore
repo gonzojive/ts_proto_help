@@ -20,6 +20,7 @@ bazel-bazel-test
 bazel-bin
 bazel-genfiles
 bazel-official_example
+bazel-updated_example
 bazel-out
 bazel-testlogs
 .cache
