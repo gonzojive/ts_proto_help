@@ -1,6 +1,7 @@
 load("@npm//http-server:index.bzl", "http_server")
 load("@npm_bazel_karma//:index.bzl", "karma_web_test_suite")
 load("@npm_bazel_labs//:index.bzl", "ts_proto_library")
+#load("@updated_example_ws//updated_rules:ts_proto_library_fix.bzl", "ts_proto_library")
 load("@npm_bazel_protractor//:index.bzl", "protractor_web_test_suite")
 load("@npm_bazel_rollup//:index.bzl", "rollup_bundle")
 load("@npm_bazel_terser//:index.bzl", "terser_minified")
@@ -22,7 +23,10 @@ ts_proto_library(
 proto_library(
     name = "car_proto",
     srcs = ["car.proto"],
-    deps = [":tire_proto"],
+    deps = [
+        ":tire_proto",
+        "@com_google_googleapis//google/type:latlng_proto",
+    ],
 )
 
 ts_proto_library(
@@ -124,6 +128,9 @@ proto_library(
         "tire.proto",
     ],
     visibility = ["//visibility:public"],
+    deps = [
+        "@com_google_googleapis//google/type:latlng_proto",
+    ],
 )
 
 protractor_web_test_suite(

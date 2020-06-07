@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 import "tire.proto";
+import "google/type/latlng.proto";
 
 package Proto;
 
@@ -11,4 +12,5 @@ message Car {
   Tire front_tires = 4;
   Tire rear_tires = 5;
   int64 mileage = 6;
+  google.type.LatLng favorite_parking_spot = 7;
 }

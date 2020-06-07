@@ -89,3 +89,30 @@ ts_setup_workspace()
 load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
 
 protobuf_deps()
+
+
+http_archive(
+    name = "com_google_googleapis",
+    urls = [
+        "https://github.com/googleapis/googleapis/archive/abd6b709a5533ba5d0bc435189ffda7f2445cd4b.tar.gz",
+    ],
+    strip_prefix = "googleapis-abd6b709a5533ba5d0bc435189ffda7f2445cd4b",
+    sha256 = "c45d0e135ac7ad54c34546404d5338e4980d0b397f093e1e2cb185ec8813430f",
+    #build_file = "@com_github_googleapis_google_cloud_cpp//bazel:googleapis.BUILD",
+)
+
+load("@com_google_googleapis//:repository_rules.bzl", "switched_rules_by_language")
+
+switched_rules_by_language(
+    name = "com_google_googleapis_imports",
+    # cc = True,
+    # csharp = True,
+    # gapic = True,
+    # go = True,
+    # grpc = True,
+    # java = True,
+    # nodejs = True,
+    # php = True,
+    # python = True,
+    # ruby = True,
+)
